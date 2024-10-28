@@ -8,6 +8,7 @@ import time
 from options import Options
 from interface import Interface
 from PyQt5.QtWidgets import QApplication
+from PyQt5.QtCore import Qt
 
 current_directory = os.path.dirname(os.path.realpath(__file__))
 logic = None
@@ -60,8 +61,11 @@ class Logic:
         return True
     
     def open_interface_loop(self):
+        QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
+        QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
         app = QApplication(sys.argv)
         window = Interface(self)
+        window.move(0, 0)
         window.show()
         sys.exit(app.exec_())
 

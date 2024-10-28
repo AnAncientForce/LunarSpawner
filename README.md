@@ -1,6 +1,6 @@
 ## What is this?
 
-A GUI to spawn enemies in a certain turned based anime game.
+A GUI to spawn enemies in a certain turn-based anime game
 
 ![Demo](Demo.png)
 
@@ -11,6 +11,10 @@ A GUI to spawn enemies in a certain turned based anime game.
 3. Specify your UID in `options.py`
 4. Run `Setup.bat`
 5. Once dependencies have installed successfully, run `python main.py` or `Run.bat`
+
+## How it works
+
+The command is generated via the interface and is sent to the `LunarCore.jar` Command Prompt window by emulating the user copying and pasting it manually.
 
 ## How to use
 
