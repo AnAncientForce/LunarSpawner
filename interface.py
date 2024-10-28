@@ -54,21 +54,7 @@ class Interface(QWidget):
             self.maze_combo.addItem(item["name"], item["id"])
         layout.addWidget(self.maze_label) 
         layout.addWidget(self.maze_combo)
-        '''
-        self.c = QLabel("Prop (Not what you fight), Battle Monsters (What you fight), Scene (Location)", self)
-        layout.addWidget(self.c)
-        self.category_combos = {}
-        for category in self.parsed_data.keys():
-            combo = QComboBox(self)
-            for item in self.parsed_data[category]:
-                combo.addItem(item["name"], item["id"])
-            combo.currentIndexChanged.connect(self.display_ids)
-            layout.addWidget(combo) 
-            self.category_combos[category] = combo
-        #self.selected_label = QLabel("Selected IDs:", self)
-        #layout.addWidget(self.selected_label)
-        '''
-
+        
         self.randomize_button = QPushButton("Randomize Enemy + Location", self)
         self.randomize_button.clicked.connect(self.randomize_enemy_and_location)
         layout.addWidget(self.randomize_button)
@@ -95,15 +81,6 @@ class Interface(QWidget):
     
 
     def copy_to_clipboard(self):
-        '''
-        for combo in self.category_combos.values():
-            if combo.currentData() == "..." or combo.currentText() == "...":
-                print(combo.currentData(), combo.currentText())
-                e = "Fields Invalid!"
-                self.label.setText(e)
-                print(e)
-                return
-        '''
         if self.logic.options.heal_before_battle:
             self.logic.paste_command_to_java_console(f"/heal @{self.logic.options.uid}")
         self.logic.paste_command_to_java_console(f"/spawn @{self.logic.options.uid} {self.prop_combo.currentData()} x{self.amount_combo.currentText()} lv{self.lv_combo.currentText()} {self.radius_combo.currentText()} {self.enemy_combo.currentData()}")
@@ -111,27 +88,14 @@ class Interface(QWidget):
 
     def copy_scene(self):
         self.logic.paste_command_to_java_console(f"/scene @{self.logic.options.uid} {self.maze_combo.currentData()}")
-        '''
-        maze_combo = self.category_combos.get("Mazes")
-        if maze_combo:
-            item_id = maze_combo.currentData()
-            item_name = maze_combo.currentText()
-            if item_id and item_name != "...":
-                self.logic.paste_command_to_java_console(f"/scene @{self.logic.uid} {maze_combo.currentData()}")
-                self.label.setText('Success!')
-        else:
-            e = "Nothing selected?"
-            self.label.setText(e)
-            print(e)
-        '''
 
 
     def randomize_enemy_and_location(self):
         if self.logic.options.randomize_prop:
-            self.prop_combo.setCurrentIndex(random.randint(1, self.maze_combo.count() - 1))
-        self.enemy_combo.setCurrentIndex(random.randint(1, self.maze_combo.count() - 1))
+            self.prop_combo.setCurrentIndex(random.randint(1, self.prop_combo.count() - 1))
+        self.enemy_combo.setCurrentIndex(random.randint(1, self.enemy_combo.count() - 1))
         self.maze_combo.setCurrentIndex(random.randint(1, self.maze_combo.count() - 1))
        
     
     def randomize_enemy(self):
-        self.enemy_combo.setCurrentIndex(random.randint(1, self.maze_combo.count() - 1))
+        self.enemy_combo.setCurrentIndex(random.randint(1, self.enemy_combo.count() - 1))

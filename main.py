@@ -79,7 +79,8 @@ class Logic:
                 pyautogui.hotkey('ctrl', 'v')  
                 time.sleep(0.5)
                 pyautogui.press('enter')
-                break
+                return
+        print("Window not found")
 
 def main() -> None:
     global logic
