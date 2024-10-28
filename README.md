@@ -2,6 +2,8 @@
 
 A GUI to spawn enemies in a certain turned based anime game.
 
+![Demo](Demo.png)
+
 ## Setup
 
 1. Clone this repository
@@ -12,11 +14,11 @@ A GUI to spawn enemies in a certain turned based anime game.
 
 ## How to use
 
-Scene = Where the battle will take place (Not all scenes will work)
-Amount = Amount of props (Prop is the thing that you hit/hits you to initiate the battle)
-Level = Level of the enemy
-Radius = How far away/apart the props will spawn
-Enemy = What you're about to be ambushed by
+- Scene = Where the battle will take place (Not all scenes will work)
+- Amount = Amount of props (Prop is the thing that you hit/hits you to initiate the battle)
+- Level = Level of the enemy
+- Radius = How far away/apart the props will spawn
+- Enemy = What you're about to be ambushed by
 
 ## Have any suggestions?
 
